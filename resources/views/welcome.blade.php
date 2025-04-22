@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
     <!-- Styles / Scripts -->
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen flex items-center justify-center p-6">
+<body class="bg-[#FDFDFC] dark:bg-[#000000] text-[#1b1b18] min-h-screen flex items-center justify-center p-6">
     <div class="max-w-xl w-full space-y-6">
         <div class="text-center">
             <h1 class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">Prueba Laravel</h1>
