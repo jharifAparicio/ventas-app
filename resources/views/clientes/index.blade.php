@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<script src="https://cdn.tailwindcss.com"></script> -->
+@section('title', 'lista de productos')
 
-    <!-- Styles / Scripts -->
-    @vite('resources/css/app.css')
-    <title>Document</title>
-</head>
+@section('breadcrumb')
+    <li>
+        <a href="{{ route('clientes.index') }}" class="text-blue-600 hover:underline">Clientes</a>
+    </li>
+@endsection
 
-<body class="bg-gray-100 p-6">
+@section('content')
     <div class="container mx-auto">
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-3xl font-semibold text-center mb-6">Lista de Clientes</h1>
@@ -22,18 +19,20 @@
         </div>
 
         @if (session('success'))
-            <div id="success-alert" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl mb-4 max-w-4xl mx-auto"
-            role="alert">
-            <strong class="font-bold">Éxito:</strong>
-            <span class="block sm:inline">{{ session('success') }}</span>
+            <div id="success-alert"
+                class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl mb-4 max-w-4xl mx-auto"
+                role="alert">
+                <strong class="font-bold">Éxito:</strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
             </div>
         @endif
 
         @if (session('deleted'))
-            <div id="deleted-alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-4 max-w-4xl mx-auto"
-            role="alert">
-            <strong class="font-bold">Eliminado:</strong>
-            <span class="block sm:inline">{{ session('deleted') }}</span>
+            <div id="deleted-alert"
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-4 max-w-4xl mx-auto"
+                role="alert">
+                <strong class="font-bold">Eliminado:</strong>
+                <span class="block sm:inline">{{ session('deleted') }}</span>
             </div>
         @endif
 
@@ -43,7 +42,7 @@
                     <th class="px-6 py-3 border-b">Tipo de Documento</th>
                     <th class="px-6 py-3 border-b">Número de Documento</th>
                     <th class="px-6 py-3 border-b">Razón Social</th>
-                    <th class="px-6 py-3 border-b">Acciones</th>
+                    <th class="px-6 py-3 border-b text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,26 +72,24 @@
         <script>
             // Auto-hide alerts after 5 seconds
             document.addEventListener('DOMContentLoaded', function() {
-            const successAlert = document.getElementById('success-alert');
-            const deletedAlert = document.getElementById('deleted-alert');
-            
-            if (successAlert) {
-                setTimeout(function() {
-                successAlert.style.transition = 'opacity 1s';
-                successAlert.style.opacity = '0';
-                setTimeout(() => successAlert.remove(), 1000);
-                }, 5000);
-            }
-            
-            if (deletedAlert) {
-                setTimeout(function() {
-                deletedAlert.style.transition = 'opacity 1s';
-                deletedAlert.style.opacity = '0';
-                setTimeout(() => deletedAlert.remove(), 1000);
-                }, 5000);
-            }
+                const successAlert = document.getElementById('success-alert');
+                const deletedAlert = document.getElementById('deleted-alert');
+
+                if (successAlert) {
+                    setTimeout(function() {
+                        successAlert.style.transition = 'opacity 1s';
+                        successAlert.style.opacity = '0';
+                        setTimeout(() => successAlert.remove(), 1000);
+                    }, 5000);
+                }
+
+                if (deletedAlert) {
+                    setTimeout(function() {
+                        deletedAlert.style.transition = 'opacity 1s';
+                        deletedAlert.style.opacity = '0';
+                        setTimeout(() => deletedAlert.remove(), 1000);
+                    }, 5000);
+                }
             });
         </script>
-</body>
-
-</html>
+    @endsection
